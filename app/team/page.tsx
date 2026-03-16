@@ -1,11 +1,15 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import { Github, Linkedin, Twitter, ArrowRight } from 'lucide-react'
 import { teamMembers } from '@/data'
 import PageHero from '@/components/ui/PageHero'
 import SectionHeader from '@/components/ui/SectionHeader'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Team',
+  description: 'Meet the developers, designers, and engineers behind Codiksa.',
+}
 
 const socialIcons: Record<string, React.ReactNode> = {
   github: <Github size={15} />,
@@ -16,6 +20,11 @@ const socialIcons: Record<string, React.ReactNode> = {
 export default function TeamPage() {
   return (
     <>
+      <style>{`
+        .team-social { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); border: 1px solid var(--border); transition: all 0.2s; text-decoration: none; }
+        .team-social:hover { color: var(--brand); border-color: var(--brand); background-color: var(--brand-glow); }
+      `}</style>
+
       <PageHero
         label="Our Team"
         title="The People Behind "
@@ -23,7 +32,6 @@ export default function TeamPage() {
         description="A small, senior team of engineers, designers, and AI specialists who care deeply about the products they build."
       />
 
-      {/* ─── TEAM GRID ───────────────────────────────────────────────────── */}
       <section className="py-20" style={{ backgroundColor: 'var(--bg)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -33,14 +41,11 @@ export default function TeamPage() {
                 className="p-6 rounded-2xl card-hover group relative overflow-hidden"
                 style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}
               >
-                {/* Glow on hover */}
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
                   style={{ background: 'radial-gradient(ellipse at top, var(--brand-glow), transparent 70%)' }}
                 />
-
                 <div className="relative">
-                  {/* Avatar */}
                   <div className="relative w-20 h-20 mb-4">
                     <Image
                       src={member.avatar}
@@ -54,46 +59,14 @@ export default function TeamPage() {
                       style={{ backgroundColor: '#22c55e', borderColor: 'var(--bg-card)' }}
                     />
                   </div>
-
-                  <h3
-                    className="text-lg font-bold mb-0.5"
-                    style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}
-                  >
+                  <h3 className="text-lg font-bold mb-0.5" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
                     {member.name}
                   </h3>
-                  <p className="text-sm font-medium mb-3" style={{ color: 'var(--brand)' }}>
-                    {member.role}
-                  </p>
-                  <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>
-                    {member.bio}
-                  </p>
-
-                  {/* Socials */}
+                  <p className="text-sm font-medium mb-3" style={{ color: 'var(--brand)' }}>{member.role}</p>
+                  <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>{member.bio}</p>
                   <div className="flex items-center gap-2">
                     {Object.entries(member.socials).map(([platform, href]) => (
-                      <a
-                        key={platform}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
-                        style={{
-                          color: 'var(--text-muted)',
-                          border: '1px solid var(--border)',
-                          backgroundColor: 'transparent',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = 'var(--brand)'
-                          e.currentTarget.style.borderColor = 'var(--brand)'
-                          e.currentTarget.style.backgroundColor = 'var(--brand-glow)'
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = 'var(--text-muted)'
-                          e.currentTarget.style.borderColor = 'var(--border)'
-                          e.currentTarget.style.backgroundColor = 'transparent'
-                        }}
-                        aria-label={platform}
-                      >
+                      <a key={platform} href={href} target="_blank" rel="noopener noreferrer" className="team-social" aria-label={platform}>
                         {socialIcons[platform]}
                       </a>
                     ))}
@@ -105,7 +78,6 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* ─── CULTURE ─────────────────────────────────────────────────────── */}
       <section className="py-20" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -120,11 +92,11 @@ export default function TeamPage() {
                 {[
                   {  title: 'Remote First', desc: 'We work from wherever we do our best thinking.' },
                   {  title: 'Always Learning', desc: 'Every team member has a personal learning budget.' },
-                  { title: 'Async by Default', desc: 'Thoughtful writing over unnecessary meetings.' },
+                  {  title: 'Async by Default', desc: 'Thoughtful writing over unnecessary meetings.' },
                   {  title: 'Ship Together', desc: 'We celebrate every deploy as a team.' },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
-                   
+                    
                     <div>
                       <h4 className="font-semibold text-sm mb-0.5" style={{ color: 'var(--text-primary)' }}>{item.title}</h4>
                       <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item.desc}</p>
@@ -134,29 +106,17 @@ export default function TeamPage() {
               </div>
             </div>
 
-            {/* Join us card */}
-            <div
-              className="p-8 rounded-2xl relative overflow-hidden"
-              style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}
-            >
-              <div
-                className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-20"
-                style={{ background: 'radial-gradient(circle, #14b371, transparent)' }}
-              />
+            <div className="p-8 rounded-2xl relative overflow-hidden" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}>
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full blur-3xl opacity-20" style={{ background: 'radial-gradient(circle, #14b371, transparent)' }} />
               <div className="relative">
                 
-                <h3
-                  className="text-2xl font-bold mb-3"
-                  style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}
-                >
+                <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
                   We're Always Looking for Great People
                 </h3>
                 <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
                   If you are passionate about building great software and want to work with a team that takes craft seriously — we would love to hear from you.
                 </p>
-                <Link href="/contact" className="btn-primary">
-                  Get in Touch <ArrowRight size={16} />
-                </Link>
+                <Link href="/contact" className="btn-primary">Get in Touch <ArrowRight size={16} /></Link>
               </div>
             </div>
           </div>

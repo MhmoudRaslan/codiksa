@@ -1,4 +1,3 @@
-'use client'
 
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
@@ -27,7 +26,6 @@ export default function ServicesPage() {
                 style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}
               >
                 <div className="flex items-start gap-5">
-                  
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-xs font-semibold" style={{ color: 'var(--text-muted)' }}>

@@ -1,4 +1,3 @@
-'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -174,12 +173,7 @@ export default function HomePage() {
                   animationDelay: `${i * 0.1}s`,
                 }}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4"
-                  style={{ backgroundColor: 'var(--brand-glow)' }}
-                >
-                  {service.icon}
-                </div>
+                
                 <h3 className="font-semibold text-lg mb-2" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
                   {service.title}
                 </h3>

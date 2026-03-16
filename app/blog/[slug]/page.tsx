@@ -5,12 +5,10 @@ import { blogPosts } from '@/data'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 interface Props {
   params: { slug: string }
-}
-
-export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -27,22 +25,20 @@ export default function BlogPostPage({ params }: Props) {
 
   return (
     <div style={{ backgroundColor: 'var(--bg)' }}>
-      {/* Back link */}
+      <style>{`
+        .back-link { color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.875rem; transition: color 0.2s; }
+        .back-link:hover { color: var(--brand); }
+        .related-card { display: flex; gap: 1rem; padding: 1rem; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+        .related-card:hover { border-color: var(--brand); transform: translateY(-2px); }
+      `}</style>
+
       <div className="max-w-4xl mx-auto px-6 pt-28 pb-4">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-sm transition-colors"
-          style={{ color: 'var(--text-muted)' }}
-          onMouseEnter={(e) => e.currentTarget.style.color = 'var(--brand)'}
-          onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-        >
+        <Link href="/blog" className="back-link">
           <ArrowLeft size={15} /> Back to Blog
         </Link>
       </div>
 
-      {/* Article */}
       <article className="max-w-4xl mx-auto px-6 pb-20">
-        {/* Header */}
         <header className="mb-10">
           <span className="section-label block mb-4">{post.category}</span>
           <h1
@@ -51,7 +47,6 @@ export default function BlogPostPage({ params }: Props) {
           >
             {post.title}
           </h1>
-
           <div className="flex flex-wrap items-center gap-5 mb-8">
             <div className="flex items-center gap-1.5 text-sm" style={{ color: 'var(--text-muted)' }}>
               <User size={14} /> {post.author}
@@ -64,20 +59,16 @@ export default function BlogPostPage({ params }: Props) {
               <Clock size={14} /> {post.readTime}
             </div>
           </div>
-
-          {/* Cover image */}
           <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden">
             <Image src={post.image} alt={post.title} fill className="object-cover" />
           </div>
         </header>
 
-        {/* Excerpt as intro */}
         <div
-          className="text-lg leading-relaxed mb-8 p-6 rounded-xl border-l-4"
+          className="text-lg leading-relaxed mb-8 p-6 rounded-xl"
           style={{
             color: 'var(--text-secondary)',
             backgroundColor: 'var(--bg-card)',
-            borderLeftColor: 'var(--brand)',
             border: '1px solid var(--border)',
             borderLeft: '4px solid var(--brand)',
           }}
@@ -85,16 +76,13 @@ export default function BlogPostPage({ params }: Props) {
           {post.excerpt}
         </div>
 
-        {/* Placeholder content */}
-        <div className="prose-content" style={{ color: 'var(--text-secondary)' }}>
+        <div style={{ color: 'var(--text-secondary)' }}>
           {[
             'Software development is constantly evolving, and staying ahead requires both technical expertise and strategic thinking. In this article, we explore the key concepts and best practices that define modern development workflows.',
             'The foundation of any successful project lies in choosing the right tools and methodologies. Whether you are building a startup MVP or scaling an enterprise platform, the decisions made early on have lasting consequences.',
             'Performance, maintainability, and developer experience are the three pillars we always optimize for at Codiksa. These are not trade-offs — with the right architecture, you can have all three.',
           ].map((para, i) => (
-            <p key={i} className="text-base leading-relaxed mb-5">
-              {para}
-            </p>
+            <p key={i} className="text-base leading-relaxed mb-5">{para}</p>
           ))}
 
           <h2
@@ -124,27 +112,15 @@ export default function BlogPostPage({ params }: Props) {
         </div>
       </article>
 
-      {/* Related posts */}
       {related.length > 0 && (
-        <section
-          className="py-16"
-          style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border)' }}
-        >
+        <section className="py-16" style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border)' }}>
           <div className="max-w-4xl mx-auto px-6">
-            <h3
-              className="text-xl font-bold mb-8"
-              style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}
-            >
+            <h3 className="text-xl font-bold mb-8" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>
               Related Articles
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {related.map((rp) => (
-                <Link
-                  key={rp.id}
-                  href={`/blog/${rp.slug}`}
-                  className="flex gap-4 p-4 rounded-xl card-hover"
-                  style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)', textDecoration: 'none' }}
-                >
+                <Link key={rp.id} href={`/blog/${rp.slug}`} className="related-card">
                   <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
                     <Image src={rp.image} alt={rp.title} fill className="object-cover" />
                   </div>

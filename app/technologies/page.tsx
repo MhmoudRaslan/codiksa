@@ -1,4 +1,3 @@
-'use client'
 
 import { technologies } from '@/data'
 import PageHero from '@/components/ui/PageHero'
@@ -52,6 +51,7 @@ export default function TechnologiesPage() {
                         className="flex flex-col items-center gap-3 p-5 rounded-2xl card-hover cursor-default"
                         style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}
                       >
+                        
                         <span
                           className="text-sm font-semibold text-center"
                           style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-body)' }}
@@ -82,10 +82,11 @@ export default function TechnologiesPage() {
           <div className="grid grid-cols-3 gap-6">
             {[
               { label: 'Battle-tested', desc: 'Only production-proven tools' },
-              { label: 'Well-maintained', desc: 'Active communities and updates' },
-              { label: 'Right fit', desc: 'Chosen for each project specifically' },
+              { label: 'Well-maintained',  desc: 'Active communities and updates' },
+              { label: 'Right fit',  desc: 'Chosen for each project specifically' },
             ].map((item) => (
               <div key={item.label} className="p-4 rounded-xl" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}>
+                <div className="text-2xl mb-2">{item.icon}</div>
                 <div className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{item.label}</div>
                 <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{item.desc}</div>
               </div>

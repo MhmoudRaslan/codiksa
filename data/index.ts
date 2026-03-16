@@ -2,7 +2,7 @@
 export const services = [
   {
     id: 'web-development',
-    icon: '',
+    
     title: 'Web Development',
     shortDesc: 'Modern, fast, scalable web applications built with cutting-edge technologies.',
     description: 'We build high-performance web apps using Next.js, React, and Node.js — from MVPs to enterprise platforms. Every project is crafted with clean architecture, SEO optimization, and pixel-perfect UI.',
@@ -10,7 +10,7 @@ export const services = [
   },
   {
     id: 'mobile-development',
-    icon: '',
+    
     title: 'Mobile Development',
     shortDesc: 'Cross-platform iOS & Android apps with native-like performance.',
     description: 'Using React Native and Flutter, we craft mobile experiences that feel truly native — smooth animations, offline support, and seamless integrations.',
@@ -18,7 +18,7 @@ export const services = [
   },
   {
     id: 'ui-ux-design',
-    icon: '',
+    
     title: 'UI/UX Design',
     shortDesc: 'Beautiful interfaces that users love and convert.',
     description: 'Our design team creates intuitive, beautiful product experiences — from user research and wireframes to polished Figma prototypes ready for dev handoff.',
@@ -26,7 +26,7 @@ export const services = [
   },
   {
     id: 'backend-apis',
-    icon: '',
+    
     title: 'Backend & APIs',
     shortDesc: 'Robust backend systems that scale with your business.',
     description: 'We design and build reliable backend architectures — microservices, monoliths, serverless — with solid databases, caching strategies, and comprehensive API documentation.',
@@ -34,7 +34,7 @@ export const services = [
   },
   {
     id: 'devops-cloud',
-    icon: '',
+    
     title: 'DevOps & Cloud',
     shortDesc: 'CI/CD pipelines, infrastructure as code, and cloud deployments.',
     description: 'From containerization with Docker to Kubernetes orchestration and AWS/GCP deployments — we make sure your product ships fast and runs reliably.',
@@ -42,7 +42,7 @@ export const services = [
   },
   {
     id: 'ai-integration',
-    icon: '',
+    
     title: 'AI Integration',
     shortDesc: 'Embed intelligence into your products with LLMs and ML models.',
     description: 'We integrate OpenAI, Claude, and custom ML models into your workflows — chatbots, recommendation engines, document processing, and more.',
@@ -52,26 +52,26 @@ export const services = [
 
 // ─── TECHNOLOGIES ────────────────────────────────────────────────────────────
 export const technologies = [
-  { name: 'React', category: 'Frontend', icon: '' },
-  { name: 'Next.js', category: 'Frontend', icon: '' },
-  { name: 'TypeScript', category: 'Frontend', icon: '' },
-  { name: 'Tailwind CSS', category: 'Frontend', icon: '' },
-  { name: 'Vue.js', category: 'Frontend', icon: '' },
-  { name: 'Node.js', category: 'Backend', icon: '' },
-  { name: 'Python', category: 'Backend', icon: '' },
-  { name: 'Django', category: 'Backend', icon: '' },
-  { name: 'FastAPI', category: 'Backend', icon: '' },
-  { name: 'PostgreSQL', category: 'Database', icon: '' },
-  { name: 'MongoDB', category: 'Database', icon: '' },
-  { name: 'Redis', category: 'Database', icon: '' },
-  { name: 'Docker', category: 'DevOps', icon: '' },
-  { name: 'Kubernetes', category: 'DevOps', icon: '' },
-  { name: 'AWS', category: 'DevOps', icon: '' },
-  { name: 'Vercel', category: 'DevOps', icon: '' },
-  { name: 'React Native', category: 'Mobile', icon: '' },
-  { name: 'Flutter', category: 'Mobile', icon: '' },
-  { name: 'OpenAI', category: 'AI/ML', icon: '' },
-  { name: 'LangChain', category: 'AI/ML', icon: '' },
+  { name: 'React', category: 'Frontend' },
+  { name: 'Next.js', category: 'Frontend'},
+  { name: 'TypeScript', category: 'Frontend' },
+  { name: 'Tailwind CSS', category: 'Frontend'  },
+  { name: 'Vue.js', category: 'Frontend' },
+  { name: 'Node.js', category: 'Backend' },
+  { name: 'Python', category: 'Backend' },
+  { name: 'Django', category: 'Backend' },
+  { name: 'FastAPI', category: 'Backend' },
+  { name: 'PostgreSQL', category: 'Database' },
+  { name: 'MongoDB', category: 'Database' },
+  { name: 'Redis', category: 'Database' },
+  { name: 'Docker', category: 'DevOps' },
+  { name: 'Kubernetes', category: 'DevOps' },
+  { name: 'AWS', category: 'DevOps' },
+  { name: 'Vercel', category: 'DevOps' },
+  { name: 'React Native', category: 'Mobile' },
+  { name: 'Flutter', category: 'Mobile' },
+  { name: 'OpenAI', category: 'AI/ML' },
+  { name: 'LangChain', category: 'AI/ML' },
 ]
 
 // ─── PROJECTS ────────────────────────────────────────────────────────────────
