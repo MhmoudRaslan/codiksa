@@ -86,7 +86,6 @@ export default function TechnologiesPage() {
               { label: 'Right fit',  desc: 'Chosen for each project specifically' },
             ].map((item) => (
               <div key={item.label} className="p-4 rounded-xl" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border)' }}>
-                <div className="text-2xl mb-2">{item.icon}</div>
                 <div className="text-sm font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{item.label}</div>
                 <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{item.desc}</div>
               </div>
